@@ -29,6 +29,7 @@ pipeline:
                       mkdir -p ~/harness
                       cd ~/harness
                       git clone https://github.com/eoinmcafee00/demo-macos.git
+                      cd demo-macos
                       git pull
               - step:
                   type: Run
@@ -44,7 +45,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      cd ~/harness
+                      cd ~/harness/demo-macos
                       xcodebuild
                       exit 0
                     reports:
