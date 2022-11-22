@@ -4,19 +4,13 @@ pipeline:
   projectIdentifier: vbtestsanity
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: eoin
-        repoName: demo-macos
-        build: <+input>
   stages:
     - stage:
         name: run
         identifier: run
         type: CI
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           platform:
             os: MacOS
             arch: Amd64
