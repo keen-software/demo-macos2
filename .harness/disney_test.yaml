@@ -34,7 +34,6 @@ pipeline:
                     shell: Sh
                     command: |-
                       xcodebuild
-                      /usr/local/bin/fastlane run trainer
                       exit 0
                     reports:
                       type: JUnit
