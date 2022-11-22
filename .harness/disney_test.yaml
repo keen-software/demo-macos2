@@ -10,7 +10,7 @@ pipeline:
         identifier: run
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           platform:
             os: MacOS
             arch: Amd64
@@ -21,6 +21,13 @@ pipeline:
             steps:
               - step:
                   type: Run
+                  name: echo
+                  identifier: echo
+                  spec:
+                    shell: Sh
+                    command: echo hey
+              - step:
+                  type: Run
                   name: Run xcode
                   identifier: Run_xcode
                   spec:
@@ -28,3 +35,9 @@ pipeline:
                     command: xcodebuild
   delegateSelectors:
     - eoin-delegate
+  properties:
+    ci:
+      codebase:
+        connectorRef: eoin
+        repoName: demo-macos
+        build: <+input>
