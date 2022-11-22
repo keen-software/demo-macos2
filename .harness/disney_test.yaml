@@ -33,7 +33,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      xcodebuild clean test
+                      xcodebuild
                       fastlane run trainer
                       exit 0
   delegateSelectors:
