@@ -36,6 +36,11 @@ pipeline:
                       xcodebuild
                       /usr/local/bin/fastlane run trainer
                       exit 0
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tests.xml
   delegateSelectors:
     - eoin-delegate
   properties:
