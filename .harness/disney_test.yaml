@@ -52,6 +52,6 @@ pipeline:
                       type: JUnit
                       spec:
                         paths:
-                          - tests.xml
+                          - ~/harness/**/*.xml
   delegateSelectors:
     - eoin-delegate
