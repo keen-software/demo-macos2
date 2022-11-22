@@ -10,7 +10,7 @@ pipeline:
         identifier: run
         type: CI
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           platform:
             os: MacOS
             arch: Amd64
@@ -19,6 +19,17 @@ pipeline:
             spec: {}
           execution:
             steps:
+              - step:
+                  type: Run
+                  name: clone
+                  identifier: clone
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mkdir -p ~/harness
+                      cd ~/harness
+                      git clone https://github.com/eoinmcafee00/demo-macos.git
+                      git pull
               - step:
                   type: Run
                   name: echo
@@ -33,6 +44,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      cd ~/harness
                       xcodebuild
                       exit 0
                     reports:
@@ -42,9 +54,3 @@ pipeline:
                           - tests.xml
   delegateSelectors:
     - eoin-delegate
-  properties:
-    ci:
-      codebase:
-        connectorRef: eoin
-        repoName: demo-macos
-        build: <+input>
