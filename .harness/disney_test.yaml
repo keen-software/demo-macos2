@@ -32,7 +32,10 @@ pipeline:
                   identifier: Run_xcode
                   spec:
                     shell: Sh
-                    command: xcodebuild
+                    command: |-
+                      xcodebuild clean test -enableCodeCoverage 
+                      fastlane run trainer
+                      exit 0
   delegateSelectors:
     - eoin-delegate
   properties:
